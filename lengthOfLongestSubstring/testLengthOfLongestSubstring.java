@@ -27,4 +27,19 @@ public class testLengthOfLongestSubstring {
     public void emptyStringTest() {
         assertEquals(0, lengthOfLongestSubstring.lengthOfLongestSubstring(""));
     }
+
+    @Test
+    public void sanityAlternatingChar() {
+        assertEquals(3, lengthOfLongestSubstring.lengthOfLongestSubstring("dvdf"));
+    }
+
+    @Test
+    public void alternatingChar() {
+        assertEquals(3, lengthOfLongestSubstring.lengthOfLongestSubstring("ddvdff"));
+    }
+
+    @Test
+    public void increasingThenAlternatingChar() {
+        assertEquals(5, lengthOfLongestSubstring.lengthOfLongestSubstring("abcdvdff"));
+    }
 }

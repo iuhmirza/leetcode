@@ -1,24 +1,36 @@
 package lengthOfLongestSubstring;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
 public class lengthOfLongestSubstring {
     public static int lengthOfLongestSubstring(String s) {
         char[] string = s.toCharArray();
-        HashSet<Character> charSet = new HashSet<>();
         int longest = 0;
+        HashMap<Character, Integer> charMap = new HashMap<>();
         for (int i = 0; i < string.length; i++) {
-            if (charSet.contains(string[i])) {
-                if (longest < charSet.size()) {
-                    longest = charSet.size();
+            if (charMap.containsKey(string[i])) {
+                if (longest < charMap.size()) {
+                    longest = charMap.size();
                 }
-                charSet.clear();
+                i = charMap.get(string[i]);
+                charMap.clear();
+                continue;
             }
-            charSet.add(string[i]);
+            charMap.put(string[i], i);
         }
-        if (longest < charSet.size()) {
-            longest = charSet.size();
+        if (longest < charMap.size()) {
+            longest = charMap.size();
         }
         return longest;
     }
 }
+
+
+
+
+
+
+
+
+
+
