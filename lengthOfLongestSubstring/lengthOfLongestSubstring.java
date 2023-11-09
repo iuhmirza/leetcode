@@ -4,23 +4,19 @@ import java.util.HashMap;
 
 public class lengthOfLongestSubstring {
     public static int lengthOfLongestSubstring(String s) {
-        char[] string = s.toCharArray();
+        int n = s.length();
         int longest = 0;
         HashMap<Character, Integer> charMap = new HashMap<>();
-        for (int i = 0; i < string.length; i++) {
-            if (charMap.containsKey(string[i])) {
-                if (longest < charMap.size()) {
-                    longest = charMap.size();
-                }
-                i = charMap.get(string[i]);
+        for (int i = 0; i < n; i++) {
+            if (charMap.containsKey(s.charAt(i))) {
+                longest = Math.max(longest, charMap.size());
+                i = charMap.get(s.charAt(i));
                 charMap.clear();
                 continue;
             }
-            charMap.put(string[i], i);
+            charMap.put(s.charAt(i), i);
         }
-        if (longest < charMap.size()) {
-            longest = charMap.size();
-        }
+        longest = Math.max(longest, charMap.size());
         return longest;
     }
 }
